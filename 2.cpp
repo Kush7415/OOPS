@@ -1,40 +1,37 @@
-#include <bits/stdc++.h>
+// WAP to access the private number of a class using friend function  and friend class in c++
+
+#include <iostream>
 using namespace std;
-class student
+
+class base
 {
+private:
+    int p;
+
+protected:
+    int k;
+
 public:
-    string name;
-    int roll;
-    int cl;
-    int marks;
-} students[10];
+    base()
+    {
+        p = 15;
+        k = 69;
+    }
+
+    friend void friendFunction(base &obj);
+};
+
+void friendFunction(base &obj)
+{
+    cout << "Private Variable: " << obj.p
+         << endl;
+    cout << "Protected Variable: " << obj.k;
+}
 
 int main()
 {
-    for (int i = 0; i < 2; i++)
-    {
-        cin >> students[i].name;
-        cin >> students[i].roll;
-        cin >> students[i].cl;
-        cin >> students[i].marks;
-    }
-    for (int i = 0; i < 2; i++)
-    {
-        cout << students[i].name << endl;
-        cout << students[i].roll << endl;
-        cout << students[i].cl << endl;
-        cout << students[i].marks << endl;
-    }
-    int max = 0;
-    int min = 0;
-    for (int i = 0; i < 2; i++)
-    {
-        if (students[i].marks < students[min].marks)
-            min = i;
-        if (students[i].marks > students[max].marks)
-            max = i;
-    }
-    cout << "max marks -" << students[max].name << endl;
-    cout << "min marks -" << students[min].name << endl;
+    base object1;
+    friendFunction(object1);
+
     return 0;
 }

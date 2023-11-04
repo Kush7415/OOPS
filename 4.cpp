@@ -1,21 +1,30 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
-void isprime(int n)
+
+class counter
 {
-    for (int i = 2; i < n; i++)
+private:
+    static int count;
+
+public:
+    counter()
     {
-        if (n % i == 0)
-            return;
+        count++;
     }
-    cout << n << endl;
-}
+
+    void display()
+    {
+        cout << "The number of objects created are :" << endl;
+    }
+};
+
+int counter ::count = 0;
+
 int main()
 {
-    int n;
-    cin >> n;
-    for (int i = 2; i <= n; i++)
-    {
-        isprime(i);
-    }
+    counter c1;
+    counter c2;
+    counter c3;
+    c3.display();
     return 0;
 }

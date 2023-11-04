@@ -1,29 +1,36 @@
-#include <bits/stdc++.h>
+// Q1. To count the number of objects created in a C++ program
+
+#include <iostream>
 using namespace std;
-class student
+
+class ObjectCounter
 {
+private:
+    static int objectCount;
+
 public:
-    string name;
-    int roll;
-    int cl;
-    int marks;
-} students[10];
+    ObjectCounter()
+    {
+        objectCount++;
+    }
+    static int getObjectCount()
+    {
+        return objectCount;
+    }
+};
+
+int ObjectCounter::objectCount = 0;
 
 int main()
 {
-    for (int i = 0; i < 1; i++)
-    {
-        cin >> students[i].name;
-        cin >> students[i].roll;
-        cin >> students[i].cl;
-        cin >> students[i].marks;
-    }
-    for (int i = 0; i < 1; i++)
-    {
-        cout << "name:" << students[i].name << endl;
-        cout << "roll no. :" << students[i].roll << endl;
-        cout << "c1:" << students[i].cl << endl;
-        cout << "marks:" << students[i].marks << endl;
-    }
+    ObjectCounter obj1;
+    ObjectCounter obj2;
+    ObjectCounter obj3;
+
+    cout << "Number of objects: " << ObjectCounter::getObjectCount() << endl;
+    ObjectCounter obj4;
+
+    cout << "Number of objects: " << ObjectCounter::getObjectCount() << endl;
+
     return 0;
 }
